@@ -1,0 +1,57 @@
+.clbc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 5em;
+}
+
+.clbc-container > * {
+  margin-bottom: 3em;
+}
+
+.clbc-no-wallet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.clbc-wallet-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.clbc-wallet-container > * {
+  margin: 2em;
+}
+
+.clbc-public-key-wrapper {
+  width: 20em;
+  margin-top: 2em;
+  overflow-wrap: break-word;
+}
+
+.clbc-create-transaction-history-wrapper {
+  margin-top: 4em;
+}
+
+.clbc-create-transaction-history-wrapper > ul {
+  list-style: none;
+  padding: 0;
+}
+
+.clbc-create-transaction-history-wrapper > ul > li {
+  padding: 0.5em;
+  margin: 0;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.clbc-transaction-table-value {
+  max-width: 80vw;
+  overflow-wrap: break-word;
+}
