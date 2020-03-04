@@ -26,7 +26,6 @@ class Process:
       return
 
     transaction = Transaction(inp, self, receiver, amount, self.ledger.get_open_transaction())
-    print(transaction)
     self.ledger.add_transaction(transaction)
     self.send_transaction(transaction)
 
@@ -67,24 +66,13 @@ def main():
       crypto_serialization.PublicFormat.OpenSSH
   )
   
-  print(private_key, public_key)
   process1 = Process(1)
-  print(process1)
   process2 = Process(2, [process1])
   process1.add_neighbor(process2)
-  print(process2)
   process1.create_transaction(process2, 10)
-  print(process1)
-  print(process2)
   process2.create_transaction(process1, 10)
-  print(process1)
-  print(process2)
   process1.create_transaction(process2, 10)
-  print(process1)
-  print(process2)
   process2.create_transaction(process1, 10)
-  print(process1)
-  print(process2)
 
   
 if __name__ == "__main__":

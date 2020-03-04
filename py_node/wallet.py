@@ -76,22 +76,3 @@ class Wallet:
 
   def toJSON(self):
     return self.account.toJSON()
-
-def main():
-  wallet = Wallet()
-  print(wallet.ledger)
-  t = wallet.create_transaction("RECEIVER", 20)
-  print(t)
-  t = wallet.create_transaction("RECEIVER", 20)
-  print(t)
-  t = wallet.create_transaction("RECEIVER", 20)
-  print(t)
-  t = wallet.create_transaction("RECEIVER", 20)
-  print(t)
-  print(wallet.get_balance())
-  print(t.validate_sig())
-  print(t.get_available_amount())
-  print(wallet.ledger)
-
-if __name__ == "__main__":
-  main()

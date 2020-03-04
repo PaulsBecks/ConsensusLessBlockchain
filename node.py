@@ -1,4 +1,5 @@
 import json
+import random
 from flask import Flask, request
 from py_node.ledger import Ledger
 from py_node.transaction import Transaction
@@ -12,7 +13,6 @@ ledger = Ledger()
 
 def dumper(obj):
   if hasattr(obj, 'toJSON'):
-    print(obj)
     return obj.toJSON()
 
 @app.route('/')
@@ -33,7 +33,6 @@ def transactions():
     transaction = json.loads(request.data).get("transaction", None)
     if not transaction:
       return 
-    print(transaction)
     return json.dumps(ledger.add_transaction(Transaction.decerialize(transaction)), default=dumper)
 
 @app.route('/transactions/open')
@@ -42,21 +41,28 @@ def transactions_open():
     transactions = ledger.get_open_transactions()
     return json.dumps(transactions, default=dumper, ensure_ascii=False).encode('utf-8')
 
-
 @app.route('/transactions/valid')
 def transactions_valid():
   if request.method == "GET":
     transactions = ledger.get_valid_transactions()
-    return json.dumps(transactions, default=dumper)
+    return json.dumps(transactions, default=dumper, ensure_ascii=False).encode('utf-8')
+
+@app.route('/transactions/open/one')
+def transactions_open_one():
+  if request.method == "GET":
+    transactions = ledger.get_open_transactions()
+    transaction = ""
+    if transactions:
+      transaction = transactions[random.choice(list(transactions.keys()))]
+    return json.dumps(transaction, default=dumper, ensure_ascii=False).encode('utf-8')
+
 
 @app.route('/accounts/transactions', methods=["POST"])
 def accounts_transactions():
   account_key = json.loads(request.data).get('account_key', None)
-  print(account_key)
   if not account_key:
     return json.dumps([])
   transactions = ledger.get_account_transactions(account_key)
-  print(transactions)
   return json.dumps(transactions, default=dumper, indent=3, ensure_ascii=False)
 
 @app.route('/accounts')
