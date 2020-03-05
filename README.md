@@ -18,7 +18,7 @@ Traditionaly, like with Bitcoin, the participating nodes need to coordinate whic
 
 Instead of communicating the whole time with everyone we say a transaction is valid when more then 50% of the total money available references this transaction and it's not a double spend. This is maybe a bit hard to grasp so I drew a little sketch.
 
-[insert the sketch here](http://google.com)
+![consensus less blockchain sketch](docs/chain_example.png)
 
 You can see the transactions 3 referes (blue arrow) to 2 and 2 to 1 and with transitivity 3 refers to 1. Thus 100 coins are stacked on top of transaction 1. Let's say we have 150 coins in total in the system. The references would make Transaction 1 valid now as more than half of the total amount of coins in the system are stacked on top of the transaction. 
 
@@ -32,7 +32,7 @@ Another drawback is, that you can't get rid of old transactions eventually as so
 
 # Wallet
 
-The wallet I build.
+[The wallet I build](https://paulsbecks.github.io/consensus-less-blockchain-wallet/).
 
 \[!important\] It is not secure, it saves your private key in the browser without any security.
 
