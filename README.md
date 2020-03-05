@@ -18,7 +18,17 @@ Traditionaly, like with Bitcoin, the participating nodes need to coordinate whic
 
 Instead of communicating the whole time with everyone we say a transaction is valid when more then 50% of the total money available references this transaction and it's not a double spend. This is maybe a bit hard to grasp so I drew a little sketch.
 
+[insert the sketch here](http://google.com)
 
+You can see the transactions 3 referes (blue arrow) to 2 and 2 to 1 and with transitivity 3 refers to 1. Thus 100 coins are stacked on top of transaction 1. Let's say we have 150 coins in total in the system. The references would make Transaction 1 valid now as more than half of the total amount of coins in the system are stacked on top of the transaction. 
+
+Any two transactions in the system with more the 50% stack on top of them need to have a common parent. And thus will be detected by everyone. If the two transaction double spend the coins it will be known. So no one has the incentive two act like that.
+
+# Drawbacks
+
+A clear drawback is that someone need to reference your transaction for it to get validated. And not just one but 50% of all the coins available. This means validation is either very slow or actors need to get incentives to move there coins and validate transactions constantly. This could be implemented by a transaction fee that will be split percentage wise by all the validators in the stack.
+
+Another drawback is, that you can't get rid of old transactions eventually as someone could come back and double spend the money later. One might think about minimization strategies though. 
 
 # Wallet
 
