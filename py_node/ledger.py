@@ -93,8 +93,7 @@ class Ledger:
       if transaction.sender == self.account: # only consider received tokens
         continue
       avlb = transaction.get_available_amount()
-      if avlb < amount:
-      else:
+      if avlb >= amount:
         return transaction
     return None
 
@@ -109,7 +108,7 @@ class Ledger:
 
   def genesis(self, receiver, amount=GENESIS_AMOUNT):
     self.genesis_account = Account()
-    transaction = Transaction({}, self.genesis_account.get_public_key(), receiver, amount, {}, None)
+    transaction = Transaction({}, self.genesis_account.get_public_key(), receiver, amount, [], None)
     transaction.valid = True
     self.genesis_account.sign(transaction)
     self.valid_transactions[transaction.sig] = transaction
