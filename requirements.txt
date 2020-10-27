@@ -1,7 +1,7 @@
 autopep8==1.5
 cffi==1.14.0
 Click==7.0
-cryptography==2.8
+cryptography==3.2
 Flask==1.1.1
 Flask-Cors==3.0.8
 itsdangerous==1.1.0
